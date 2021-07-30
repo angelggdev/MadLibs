@@ -5,8 +5,8 @@ import MadLibs from './madlibs.js';
 const GridTitles = ({ mouseclick }) => {
     return (
         <div className= 'tc'>
-            <h1 className='tc Title'>Choose a Story</h1>
-            <div className='grid_madlibs'>
+            <h1 className='tc title'>Choose a Story</h1>
+            <div className='gridMadlibs'>
                 {
                     MadLibs.templates.map((x, i) => {
                         return (

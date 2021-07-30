@@ -16,10 +16,7 @@ body {
 .container{
   margin:2rem;
 }
-.grid_madlibs {
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr; */
+.gridMadlibs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -33,8 +30,6 @@ body {
   border-radius: 1.875rem;
   border-style:outset;
   text-align:center;
-  /* max-width: 90%;
-  height: 90%; */
   width: 10rem;
   height: 10rem;
   align-items: center;
@@ -58,7 +53,7 @@ body {
   font-weight: bold;
 }
 
-.Title {
+.title {
   background-color: rgba(238, 231, 227, 0.8);
   padding: 0.625rem;
   margin-left: auto;
@@ -107,7 +102,7 @@ body {
   justify-content: center;
   height:100vh;
 }
-.finalbutton {
+.finalButton {
   background-color: rgba(238, 231, 227, 0.8);
   padding: 0.625rem;
   margin: 0.625rem;

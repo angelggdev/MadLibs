@@ -61,9 +61,9 @@ function App() {
     })
     setScreen( 
     <div className='finalLib'>
-      <button className=' finalbutton db' onClick={erase}>Return</button>
+      <button className=' finalButton db' onClick={erase}>Return</button>
       <p className='storyF db pa4'>{final}</p>
-      <button className='finalbutton db' onClick={BackToMenu}>Select another story</button>
+      <button className='finalButton db' onClick={BackToMenu}>Select another story</button>
     </div>)
   }
   const Enter = (event) => {
