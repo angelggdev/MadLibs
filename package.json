@@ -1,6 +1,6 @@
 {
   "name": "mad-libs",
-  "homepage" : "https://angelggdev.github.io/",
+  "homepage" : "https://angelggdev.github.io/mad-libs",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
