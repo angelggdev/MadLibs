@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import 'tachyons';
-import GridTitles from '../Components/GridTitles.js';
-import Questionaire from '../Components/questionaire.js';
-import MadLibs from '../Components/madlibs.js';
+import GridTitles from '../Components/GridTitles/GridTitles';
+import Questionaire from '../Components/Questionaire/Questionaire';
+import MadLibs from '../Components/madlibs';
 
 
 
@@ -88,13 +88,13 @@ function App() {
         <div className='question'>
             <Questionaire 
             word={MadLibs.templates[lib].blanks[counter]}
-            holus={ChangeUserInput}
+            userInput={ChangeUserInput}
             submit={Submit}
-            lastQuestion={erase}
-            field={searchfield}
-            enterSubmit={Enter}
-            number={counter}
-            total={libLength}
+            erase={erase}
+            searchfield={searchfield}
+            enter={Enter}
+            counter={counter}
+            libLength={libLength}
             />
         </div>
     );
