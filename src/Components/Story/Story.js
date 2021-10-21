@@ -1,35 +1,26 @@
-
+import { useContext } from "react";
+import { useHistory } from "react-router";
+import StoryContext from "../../contexts/StoryContext";
 
 const Story = () => {
+    const {finalStory, previousWord, selectAnotherStory, story} = useContext(StoryContext);
+    const history = useHistory();
 
-    /* const final = MadLibs.templates[lib].value.map((x, i) => {
-        if (blanks[i] !== undefined) {
-          return x + blanks[i];
-        } else {
-          return x;
-        }
-    }); */
+    const returnToQuestionaire = () => {
+        previousWord();
+        history.push(process.env.PUBLIC_URL + `/story/${story}`);
+    }
 
-    /* const BackToMenu = () => {
-    setCounter(0);
-    setLib("");
-    setSearchfield("");
-    setBlanks([]);
-    setUserInput("");
-    setLiblength("");
-    };
- */
     return(
-        {/* <div className="finalLib">
-            <button className=" finalButton db" onClick={erase}>
+        <div className="finalLib">
+            <button className=" finalButton db" onClick={returnToQuestionaire}>
                 Return
             </button>
-            <p className="storyF db pa4">{final}</p>
-            <button className="finalButton db" onClick={BackToMenu}>
+            <p className="storyF db pa4">{finalStory}</p>
+            <button className="finalButton db" onClick={selectAnotherStory}>
                 Select another story
             </button>
-        </div> */
-    }
+        </div> 
     )
 }
 

@@ -9,7 +9,7 @@ import Question from "./Components/Question/Question";
 
 function App() {
   
-  
+
   return (
     <BrowserRouter>
       <Switch>
@@ -20,7 +20,7 @@ function App() {
           <Route path={process.env.PUBLIC_URL +"/story/:storyId"}>
             <Question />
           </Route>
-          <Route path={process.env.PUBLIC_URL + "/story/result"}>
+          <Route path={process.env.PUBLIC_URL + "/result"}>
             <Story />
           </Route>
         </StoryContextProvider>

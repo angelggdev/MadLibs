@@ -11,21 +11,29 @@ export const StoryContextProvider = ({children}) =>{
     const [storyLength, setStorylength] = useState('');
     const [blanks, setBlanks] = useState([]);
     const [counter, setCounter] = useState(0);
+    const [finalStory, setFinalStory] = useState('');
 
     const chooseStory = (storyId) => {
-        console.log(storyId)
         setStory(storyId);
         setStorylength(MadLibs.templates[storyId].blanks.length);
         console.log(MadLibs.templates[storyId].blanks.length)
     }
 
     const addWord = (word) => {
-        if (word !== "") {
+        if (word !== "" && counter < storyLength - 1) {
           setCounter(counter + 1);
           let _blanks = blanks
           _blanks.push(word);
           setBlanks(_blanks);
           console.log(_blanks)
+        } 
+        if (word !== "" && counter === storyLength - 1) {
+            history.push(process.env.PUBLIC_URL + "/result");
+            setCounter(counter + 1);
+            let _blanks = blanks
+            _blanks.push(word);
+            setBlanks(_blanks);
+            buildStory();
         }
     };
 
@@ -37,12 +45,27 @@ export const StoryContextProvider = ({children}) =>{
             setBlanks(_blanks);
             console.log(_blanks)
         } else {
-            history.push(process.env.PUBLIC_URL + "/");
-            setStory('');
-            setStorylength('');
-            setCounter(0);
+            selectAnotherStory();
         }
     };
+    
+    const selectAnotherStory = () => {
+        history.push(process.env.PUBLIC_URL + "/");
+        setStory('');
+        setStorylength('');
+        setCounter(0);
+    }
+
+    const buildStory = () => {
+        let _finalStory = MadLibs.templates[story].value.map((x, i) => {
+            if (blanks[i] !== undefined) {
+              return x + blanks[i];
+            } else {
+              return x;
+            }
+        });
+        setFinalStory(_finalStory);
+    } 
 
 
     return(
@@ -52,7 +75,12 @@ export const StoryContextProvider = ({children}) =>{
                 counter,
                 addWord,
                 storyLength,
-                previousWord
+                previousWord,
+                finalStory,
+                selectAnotherStory,
+                setStory,
+                setStorylength,
+                story
             }}
         >
             {children}

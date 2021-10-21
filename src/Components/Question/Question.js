@@ -4,11 +4,16 @@ import MadLibs from '../../assets/madlibs';
 import { useParams } from 'react-router';
 
 const Question = () => {
-    const {counter, addWord, storyLength, previousWord} = useContext(StoryContext)
+    const {counter, addWord, storyLength, previousWord, setStory, setStorylength} = useContext(StoryContext)
     const {storyId} = useParams();
     const [word, setWord] = useState('');
-    const [question, setQuestion] = useState(MadLibs.templates[storyId].blanks[counter]);
+    const [question, setQuestion] = useState('');
     const [input, setInput] = useState('');
+
+    useEffect(() => {
+        setStory(storyId);
+        setStorylength(MadLibs.templates[storyId].blanks.length);
+    }, [storyId])
 
     useEffect(() => {
         setQuestion(MadLibs.templates[storyId].blanks[counter]);
