@@ -20,6 +20,7 @@ const Question = () => {
     useEffect(() => {
         setStory(storyId);
         setStorylength(MadLibs.templates[storyId].blanks.length);
+        console.log('holis')
     }, [storyId])
 
     useEffect(() => {

@@ -1,12 +1,9 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import 'tachyons';
-import { useContext } from 'react';
-import StoryContext from '../../../contexts/StoryContext.js';
 
 
 const Box = ({titles, index}) => {
-    const {chooseStory} = useContext(StoryContext);
     const history = useHistory();
 
     const goToStory = () => {

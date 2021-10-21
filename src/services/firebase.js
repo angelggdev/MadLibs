@@ -27,5 +27,3 @@ export const login = (email, password) => {
     })
 }
 
-
-export default storageRef;

@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 import { useHistory } from "react-router";
 import MadLibs from "../assets/madlibs";
 
