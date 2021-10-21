@@ -25,6 +25,7 @@ const Question = () => {
     useEffect(() => {
         setQuestion(MadLibs.templates[storyId].blanks[counter]);
         setInput("");
+        setWord("");
     }, [counter])
 
     const enter = (event) => {

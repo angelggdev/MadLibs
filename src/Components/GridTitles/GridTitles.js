@@ -4,7 +4,7 @@ import MadLibs from '../../assets/madlibs.js';
 const GridTitles = () => {
 
     return (
-        <div className= 'tc'>
+        <div className= 'tc container'>
             <h1 className='tc title'>Choose a Story</h1>
             <div className='gridMadlibs'>
                 {
