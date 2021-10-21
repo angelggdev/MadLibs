@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import StoryContext from "../../contexts/StoryContext";
 
 const Story = () => {
-    const {finalStory, previousWord, selectAnotherStory, story} = useContext(StoryContext);
+    const {finalStory, previousWord, story, selectAnotherStory} = useContext(StoryContext);
     const history = useHistory();
 
     const returnToQuestionaire = () => {

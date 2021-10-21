@@ -11,13 +11,7 @@ export const StoryContextProvider = ({children}) =>{
     const [storyLength, setStorylength] = useState('');
     const [blanks, setBlanks] = useState([]);
     const [counter, setCounter] = useState(0);
-    const [finalStory, setFinalStory] = useState('');
-
-    const chooseStory = (storyId) => {
-        setStory(storyId);
-        setStorylength(MadLibs.templates[storyId].blanks.length);
-        console.log(MadLibs.templates[storyId].blanks.length)
-    }
+    const [finalStory, setFinalStory] = useState('Choose a template and build your own story!');
 
     const addWord = (word) => {
         if (word !== "" && counter < storyLength - 1) {
@@ -43,7 +37,6 @@ export const StoryContextProvider = ({children}) =>{
             let _blanks = blanks
             _blanks.pop();
             setBlanks(_blanks);
-            console.log(_blanks)
         } else {
             selectAnotherStory();
         }
@@ -54,6 +47,8 @@ export const StoryContextProvider = ({children}) =>{
         setStory('');
         setStorylength('');
         setCounter(0);
+        setFinalStory('Choose a template and build your own story!');
+        setBlanks([]);
     }
 
     const buildStory = () => {
@@ -71,16 +66,15 @@ export const StoryContextProvider = ({children}) =>{
     return(
         <StoryContext.Provider
             value={{
-                chooseStory,
                 counter,
                 addWord,
                 storyLength,
                 previousWord,
                 finalStory,
-                selectAnotherStory,
                 setStory,
                 setStorylength,
-                story
+                story,
+                selectAnotherStory
             }}
         >
             {children}

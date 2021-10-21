@@ -1,12 +1,7 @@
-import {useContext} from 'react';
 import Box from './Box/Box.js';
 import MadLibs from '../../assets/madlibs.js';
-import StoryContext from '../../contexts/StoryContext.js';
 
 const GridTitles = () => {
-    const {chooseStory} = useContext(StoryContext);
-
-
 
     return (
         <div className= 'tc'>
