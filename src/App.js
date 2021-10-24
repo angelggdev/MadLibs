@@ -8,6 +8,7 @@ import Question from "./Components/Question/Question";
 import Menu from "./Components/Menu/Menu";
 import Login from "./Components/Login/Login";
 import { UserContextProvider } from "./contexts/UserContext";
+import MyStories from "./Components/MyStories/MyStories";
 
 function App() {
   
@@ -29,6 +30,9 @@ function App() {
             </Route>
             <Route path={process.env.PUBLIC_URL + "/result"}>
               <Story />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + "/my-stories"}>
+              <MyStories />
             </Route>
           </StoryContextProvider>
         </UserContextProvider>
