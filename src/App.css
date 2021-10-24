@@ -14,6 +14,7 @@ body {
   background-size: cover; 
 }
 .gridMadlibs {
+  padding:10px 40px 10px 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -51,15 +52,15 @@ body {
 }
 
 .title {
-  background-color: rgba(238, 231, 227, 0.8);
   padding: 0.625rem;
   margin-left: auto;
   margin-right: auto;
   border-radius: 1.875rem;
-  border-style:outset;
+  font-size: 50px;
   text-align:center;
-  max-width: 50%;
+  width:fit-content;
   height: 90%;
+  color:white;
 }
 
 .button {

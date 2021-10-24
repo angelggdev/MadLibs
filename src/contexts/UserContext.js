@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { login } from "../services/firebase";
+import { login, register } from "../services/firebase";
 
 const UserContext = createContext();
 
@@ -9,21 +9,25 @@ export const UserContextProvider = ({children}) =>{
 
     const[loginError, setLoginError] = useState();
     const[user, setUser] = useState();
+    const[isLoggingIn, setIsLoggingIn] = useState(false);
 
     useEffect(() => {
         setUser(sessionStorage.getItem('user'));
     }, [])
 
     const submitLogin = (email, password) => {
+        setIsLoggingIn(true);
         login(email, password)
         .then((res) => {
             sessionStorage.setItem('user', res.email)
             setUser(res.email);
-            history.push("/");
+            history.push(process.env.PUBLIC_URL + "/");
             setLoginError();
+            setIsLoggingIn(false);
         })
         .catch((err) => {
-            setLoginError(`${err[0]}: ${err[1]}`)
+            setLoginError(`${err[0]}: ${err[1]}`);
+            setIsLoggingIn(false);
         });
     }
 
@@ -40,7 +44,23 @@ export const UserContextProvider = ({children}) =>{
     const logout = () => {
         sessionStorage.removeItem('user');
         setUser();
-        history.push('/login');
+        history.push(process.env.PUBLIC_URL + '/login');
+    }
+
+    const submitRegister = (email, password) => {
+        setIsLoggingIn(true);
+        register(email, password)
+        .then((res) => {
+            sessionStorage.setItem('user', res.email)
+            setUser(res.email);
+            history.push(process.env.PUBLIC_URL + "/");
+            setLoginError();
+            setIsLoggingIn(false);
+        })
+        .catch((err) => {
+            setLoginError(`${err[0]}: ${err[1]}`);
+            setIsLoggingIn(false);
+        });
     }
 
     return(
@@ -50,7 +70,9 @@ export const UserContextProvider = ({children}) =>{
                 submitLogin,
                 checkUser,
                 logout,
-                user
+                user,
+                isLoggingIn,
+                submitRegister
             }}
         >
             {children}

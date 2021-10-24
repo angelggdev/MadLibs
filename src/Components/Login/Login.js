@@ -1,25 +1,26 @@
 import './Login.css';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Spinner } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { useState, useContext } from 'react';
 import UserContext from '../../contexts/UserContext';
 
 
 const Login = () => {
-    const{submitLogin, loginError, user} = useContext(UserContext);
+    const{submitLogin, loginError, user, isLoggingIn, submitRegister} = useContext(UserContext);
     const[disableSubmit, setDisableSubmit] = useState(true);
+    const[register, setRegister] = useState(false);
 
     const validate = values => {
         const errors = {};
     
         if (!values.email) {
-          errors.email = 'Requerido';
+          errors.email = 'Required';
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-          errors.email = 'Email inválido';
+          errors.email = 'Invalid email';
         }
     
         if (!values.password) {
-            errors.password = 'Requerido';
+            errors.password = 'Required';
         }
     
         if(Object.keys(errors).length === 0 
@@ -39,7 +40,11 @@ const Login = () => {
         },
         validate,
         onSubmit: values => {
-            submitLogin(values.email, values.password)
+            if (!register){
+                submitLogin(values.email, values.password);
+            } else {
+                submitRegister(values.email, values.password);
+            }
         },
     });
 
@@ -48,7 +53,7 @@ const Login = () => {
             <Form className='loginForm' onSubmit={(e) => {e.preventDefault(); formik.handleSubmit(e)}}>
                 {
                     loginError&&
-                    <div className='formAlert'>Email o Contraseña incorrectos</div>
+                    <div className='formAlert'>Invalid email or password</div>
                 }
                 <Form.Group>
                     <Form.Label>
@@ -68,7 +73,7 @@ const Login = () => {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>
-                        <p>Contraseña</p>
+                        <p>Password</p>
                         {formik.touched.password && formik.errors.password ? (
                             <span className='formAlert'>{formik.errors.password}</span>
                         ) : null}
@@ -85,15 +90,33 @@ const Login = () => {
                 </Form.Group>
                 {
                     user?
-                    <span className='formAlert'>Ya hay una sesión iniciada</span>
+                    <span className='formAlert'>There's a user signed in already</span>
                     :
-                    <Button
-                        type='submit'
-                        variant={disableSubmit?'dark':'none'}
-                        disabled={disableSubmit}
-                    >
-                        Iniciar Sesión
-                    </Button>
+                    isLoggingIn?
+                    <Spinner animation="grow" />
+                    :
+                    register?
+                    <>
+                        <Button
+                            type='submit'
+                            variant={disableSubmit?'dark':'primary'}
+                            disabled={disableSubmit}
+                        >
+                            Register
+                        </Button>
+                        <Button variant='none' onClick={() => setRegister(false)}>Login</Button>
+                    </>
+                    :
+                    <>
+                        <Button
+                            type='submit'
+                            variant={disableSubmit?'dark':'primary'}
+                            disabled={disableSubmit}
+                        >
+                            Login
+                        </Button>
+                        <Button variant='none' onClick={() => setRegister(true)}>Register</Button>
+                    </>
                 }
             </Form>
         </Container>

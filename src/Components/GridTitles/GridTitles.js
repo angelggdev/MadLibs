@@ -1,7 +1,24 @@
 import Box from './Box/Box.js';
 import MadLibs from '../../assets/madlibs.js';
+import { useContext, useEffect } from 'react';
+import StoryContext from '../../contexts/StoryContext.js';
 
 const GridTitles = () => {
+    const{
+        setStory,
+        setStorylength,
+        setCounter,
+        setFinalStory,
+        setBlanks
+    } = useContext(StoryContext);
+
+    useEffect(() => {
+        setStory('');
+        setStorylength('');
+        setCounter(0);
+        setFinalStory('Choose a template and build your own story!');
+        setBlanks([]);
+    }, [])
 
     return (
         <div className= 'tc container'>

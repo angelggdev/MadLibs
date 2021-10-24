@@ -74,7 +74,10 @@ export const StoryContextProvider = ({children}) =>{
                 setStory,
                 setStorylength,
                 story,
-                selectAnotherStory
+                selectAnotherStory,
+                setCounter,
+                setFinalStory,
+                setBlanks
             }}
         >
             {children}

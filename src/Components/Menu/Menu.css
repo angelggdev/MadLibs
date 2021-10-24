@@ -1,0 +1,22 @@
+nav{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav a{
+    color:white;
+    text-decoration: none;
+    padding:10px;
+    border-radius:10px;
+}
+
+nav a:hover {
+    color: black;
+    background: radial-gradient(rgba(238, 231, 227, 0.5), rgba(238, 231, 227, 0));
+}
+
+.current{
+    background: radial-gradient(rgba(238, 231, 227, 0.8), rgba(238, 231, 227, 0));
+    color:black;
+}
