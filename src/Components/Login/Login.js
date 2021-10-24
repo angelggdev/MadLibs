@@ -104,7 +104,7 @@ const Login = () => {
                         >
                             Register
                         </Button>
-                        <Button variant='none' onClick={() => setRegister(false)}>Login</Button>
+                        <Button variant='none' onClick={() => setRegister(false)} className='loginLink'>Login</Button>
                     </>
                     :
                     <>
@@ -115,7 +115,7 @@ const Login = () => {
                         >
                             Login
                         </Button>
-                        <Button variant='none' onClick={() => setRegister(true)}>Register</Button>
+                        <Button variant='none' onClick={() => setRegister(true)} className='loginLink'>Register</Button>
                     </>
                 }
             </Form>

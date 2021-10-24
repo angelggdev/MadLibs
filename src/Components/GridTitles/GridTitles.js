@@ -21,7 +21,7 @@ const GridTitles = () => {
     }, [])
 
     return (
-        <div className= 'tc container'>
+        <div className= 'tc container gridTitles'>
             <h1 className='tc title'>Choose a Story</h1>
             <div className='gridMadlibs'>
                 {
