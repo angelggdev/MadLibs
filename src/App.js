@@ -9,6 +9,7 @@ import Menu from "./Components/Menu/Menu";
 import Login from "./Components/Login/Login";
 import { UserContextProvider } from "./contexts/UserContext";
 import MyStories from "./Components/MyStories/MyStories";
+import MyStory from "./Components/MyStories/MyStory/MyStory";
 
 function App() {
   
@@ -31,8 +32,11 @@ function App() {
             <Route path={process.env.PUBLIC_URL + "/result"}>
               <Story />
             </Route>
-            <Route path={process.env.PUBLIC_URL + "/my-stories"}>
+            <Route exact path={process.env.PUBLIC_URL + "/my-stories"}>
               <MyStories />
+            </Route>
+            <Route path={process.env.PUBLIC_URL + "/my-stories/:myStoryId"}>
+              <MyStory />
             </Route>
           </StoryContextProvider>
         </UserContextProvider>

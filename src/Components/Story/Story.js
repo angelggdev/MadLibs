@@ -1,15 +1,20 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import StoryContext from "../../contexts/StoryContext";
 import UserContext from "../../contexts/UserContext";
 import { addStory } from "../../services/firebase";
+import { Button } from "react-bootstrap";
+import SaveStoryModal from "./SaveStoryModal/SaveStoryModal";
 
 const Story = () => {
     const {finalStory, previousWord, story, selectAnotherStory} = useContext(StoryContext);
     const {user} = useContext(UserContext);
 
-    const history = useHistory();;
+    const history = useHistory();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [showSaveModal, setShowSaveModal] = useState(false);
 
     useEffect(() => {
         user ? setIsLoggedIn(true):setIsLoggedIn(false);
@@ -25,16 +30,19 @@ const Story = () => {
             <button className=" finalButton db" onClick={returnToQuestionaire}>
                 Return
             </button>
-            <p className="storyF db pa4">{finalStory}</p>
+            <div className="storyF db pa4">
+                <p>{finalStory}</p>
+                {
+                    isLoggedIn && finalStory !== 'Choose a template and build your own story!' &&
+                    <Button variant='light' onClick={() => setShowSaveModal(true)}>
+                        <FontAwesomeIcon icon={faSave} color='green' size='lg'/>
+                    </Button>
+                }
+            </div>
             <button className="finalButton db" onClick={selectAnotherStory}>
                 Select another story
             </button>
-            {
-                isLoggedIn &&
-                <button className="finalButton db" onClick={() => addStory(finalStory.toString(), 'story-test')}>
-                    Save story
-                </button>
-            }
+            <SaveStoryModal showSaveModal={showSaveModal} setShowSaveModal={setShowSaveModal} finalStory={finalStory}/>
         </div> 
     )
 }

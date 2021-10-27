@@ -1,0 +1,6 @@
+.myStoriesContainer{
+    display:flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+}

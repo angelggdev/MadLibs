@@ -16,17 +16,36 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 export const addStory = (_story, storyName) => {
-    let currentUser = firebase.auth().currentUser;
-    db.collection(currentUser.email).add({
-        title: storyName,
-        story: _story
+    return new Promise((resolve, reject) => {
+        db.collection(sessionStorage.getItem('user')).add({
+            title: storyName,
+            story: _story
+        })
+        .then((docRef) => {
+            resolve(docRef);
+        })
+        .catch((error) => {
+            reject(error);
+        });
     })
-    .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
+}
+
+export const getStories = () => {
+    return new Promise((resolve, reject) => {
+        let stories = [];
+        db.collection(sessionStorage.getItem('user')).get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                let id = doc.id;
+                let story = {id, ...doc.data()}
+                stories.push(story);
+            })
+            resolve(stories)
+        })
+        .catch((error) => {
+            reject(error);
+        })
+    })   
 }
 
 export const login = (email, password) => {

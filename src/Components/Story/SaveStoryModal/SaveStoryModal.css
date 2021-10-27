@@ -1,0 +1,15 @@
+.saveModal{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align:center;
+}
+
+.modalHeader{
+    height:100px;
+}
+
+.saveModal input{
+    margin:10px;
+}

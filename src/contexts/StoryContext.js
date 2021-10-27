@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 import { useHistory } from "react-router";
 import MadLibs from "../assets/madlibs";
+import { addStory, getStories } from "../services/firebase";
 
 const StoryContext = createContext();
 
@@ -12,6 +13,8 @@ export const StoryContextProvider = ({children}) =>{
     const [blanks, setBlanks] = useState([]);
     const [counter, setCounter] = useState(0);
     const [finalStory, setFinalStory] = useState('Choose a template and build your own story!');
+    const [savingStory, setSavingStory] = useState(false);
+    const [myStories, setMyStories] = useState([]);
 
     const addWord = (word) => {
         if (word !== "" && counter < storyLength - 1) {
@@ -62,6 +65,24 @@ export const StoryContextProvider = ({children}) =>{
         setFinalStory(_finalStory);
     } 
 
+    const saveStory = (_story, storyName) => {
+        setSavingStory(true);
+        addStory(_story, storyName)
+        .then(() => {
+            setSavingStory(false);
+        })
+        .catch(() => {
+            setSavingStory(false);
+        })
+    }
+
+    const getUserStories = () => {
+        getStories()
+        .then((res) => {
+            setMyStories(res);
+        });
+    }
+
 
     return(
         <StoryContext.Provider
@@ -77,7 +98,12 @@ export const StoryContextProvider = ({children}) =>{
                 selectAnotherStory,
                 setCounter,
                 setFinalStory,
-                setBlanks
+                setBlanks,
+                saveStory,
+                savingStory,
+                getUserStories,
+                myStories,
+                setMyStories
             }}
         >
             {children}

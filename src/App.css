@@ -109,7 +109,6 @@ body {
   border-style:outset;
   text-align:center;
   cursor:pointer;
-  font-size:0.65rem;
   max-width: 50%;
 }
 .finalbutton:hover {
