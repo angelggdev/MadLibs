@@ -13,7 +13,6 @@ export const StoryContextProvider = ({children}) =>{
     const [blanks, setBlanks] = useState([]);
     const [counter, setCounter] = useState(0);
     const [finalStory, setFinalStory] = useState('Choose a template and build your own story!');
-    const [savingStory, setSavingStory] = useState(false);
     const [myStories, setMyStories] = useState([]);
 
     const addWord = (word) => {
@@ -65,17 +64,6 @@ export const StoryContextProvider = ({children}) =>{
         setFinalStory(_finalStory);
     } 
 
-    const saveStory = (_story, storyName) => {
-        setSavingStory(true);
-        addStory(_story, storyName)
-        .then(() => {
-            setSavingStory(false);
-        })
-        .catch(() => {
-            setSavingStory(false);
-        })
-    }
-
     const getUserStories = () => {
         getStories()
         .then((res) => {
@@ -99,8 +87,6 @@ export const StoryContextProvider = ({children}) =>{
                 setCounter,
                 setFinalStory,
                 setBlanks,
-                saveStory,
-                savingStory,
                 getUserStories,
                 myStories,
                 setMyStories
