@@ -26,9 +26,12 @@ const Story = () => {
 
     return(
         <div className="finalLib">
-            <button className=" finalButton db" onClick={returnToQuestionaire}>
-                Return
-            </button>
+            {
+                finalStory !== 'Choose a template and build your own story!'  &&
+                <button className=" finalButton db" onClick={returnToQuestionaire}>
+                    Return
+                </button>
+            }
             <div className="storyF db pa4">
                 <p>{finalStory}</p>
                 {
@@ -38,9 +41,12 @@ const Story = () => {
                     </Button>
                 }
             </div>
-            <button className="finalButton db" onClick={selectAnotherStory}>
-                Select another story
-            </button>
+            {
+                finalStory !== 'Choose a template and build your own story!'  &&
+                <button className="finalButton db" onClick={selectAnotherStory}>
+                    Select another story
+                </button>
+            }
             <SaveStoryModal showSaveModal={showSaveModal} setShowSaveModal={setShowSaveModal} finalStory={finalStory}/>
         </div> 
     )
