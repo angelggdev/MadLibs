@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import { useHistory } from "react-router";
 import MadLibs from "../assets/madlibs";
-import { addStory, getStories } from "../services/firebase";
+import { getStories } from "../services/firebase";
 
 const StoryContext = createContext();
 

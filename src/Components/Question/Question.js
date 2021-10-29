@@ -21,13 +21,13 @@ const Question = () => {
     useEffect(() => {
         setStory(storyId);
         setStorylength(MadLibs.templates[storyId].blanks.length);
-    }, [storyId])
+    }, [storyId, setStory, setStorylength])
 
     useEffect(() => {
         setQuestion(MadLibs.templates[storyId].blanks[counter]);
         setInput("");
         setWord("");
-    }, [counter])
+    }, [counter, storyId])
 
     const enter = (event) => {
         if (event.key === "Enter") {

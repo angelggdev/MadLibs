@@ -10,10 +10,8 @@ const MyStory = () => {
     const{myStoryId} = useParams();
 
     const[story, setStory] = useState('');
-    const[loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setLoading(true);
         user &&
         myStories.length !== 0 &&
         myStories.forEach((x) => {
@@ -21,8 +19,7 @@ const MyStory = () => {
                 setStory(x.story)
             }
         })
-        setLoading(false);
-    }, [myStoryId])
+    }, [myStoryId, user, myStories])
 
     const returnToQuestionaire = () => {
         history.push(process.env.PUBLIC_URL + `/my-stories`);
