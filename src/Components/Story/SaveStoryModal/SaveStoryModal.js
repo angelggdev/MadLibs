@@ -21,6 +21,7 @@ const SaveStoryModal = (props) => {
 
     return(
         <Modal
+            autoFocus={false}
             animation={false}
             show={props.showSaveModal}
             onHide={() => {props.setShowSaveModal(!props.showSaveModal)}}
@@ -36,7 +37,7 @@ const SaveStoryModal = (props) => {
                     <Spinner animation='grow' />
                     :
                     <>
-                        <input type='text' onChange={(e) => setStoryName(e.target.value)} placeholder='Title'/>
+                        <input type='text' autoFocus={true} onChange={(e) => setStoryName(e.target.value)} onKeyUp={e => e.key === 'Enter' && saveStory(props.finalStory.toString(), storyName)} placeholder='Title'/>
                         <Button variant='success' onClick={() => saveStory(props.finalStory.toString(), storyName)}>Save</Button>
                     </>
                 }
