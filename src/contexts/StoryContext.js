@@ -14,6 +14,7 @@ export const StoryContextProvider = ({children}) =>{
     const [counter, setCounter] = useState(0);
     const [finalStory, setFinalStory] = useState('Choose a template and build your own story!');
     const [myStories, setMyStories] = useState([]);
+    const [gettingStories, setGettingStories] = useState(false);
 
     const addWord = (word) => {
         if (word !== "" && counter < storyLength - 1) {
@@ -65,9 +66,11 @@ export const StoryContextProvider = ({children}) =>{
     } 
 
     const getUserStories = () => {
+        setGettingStories(true);
         getStories()
         .then((res) => {
             setMyStories(res);
+            setGettingStories(false);
         });
     }
 
@@ -89,7 +92,8 @@ export const StoryContextProvider = ({children}) =>{
                 setBlanks,
                 getUserStories,
                 myStories,
-                setMyStories
+                setMyStories,
+                gettingStories
             }}
         >
             {children}

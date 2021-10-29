@@ -11,7 +11,7 @@ import { removeStory } from '../../services/firebase';
 const MyStories = () => {
     const{user} = useContext(UserContext);
     const history = useHistory();
-    const{getUserStories, myStories, setMyStories} = useContext(StoryContext);
+    const{getUserStories, myStories, setMyStories, gettingStories} = useContext(StoryContext);
     const[removingStory, setRemovingStory] = useState(false);
 
     useEffect(() => {
@@ -33,6 +33,7 @@ const MyStories = () => {
         <div className='myStoriesContainer'>
             {
                 user?
+                !gettingStories?
                 myStories.length !== 0?
                 myStories.map((x, i) => {
                     return(
@@ -57,6 +58,10 @@ const MyStories = () => {
                         </div>
                     )
                 })
+                :
+                <div className="storyF db pa4">
+                    Play to create your first story!
+                </div>
                 :
                 <Spinner animation='grow'/>
                 :
