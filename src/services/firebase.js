@@ -48,6 +48,16 @@ export const getStories = () => {
     })   
 }
 
+export const removeStory = (username, storyID) => {
+    return new Promise((resolve, reject) => {
+        db.collection(username).doc(storyID).delete().then(() => {
+            resolve("Document successfully deleted!");
+        }).catch((error) => {
+            reject("Error removing document: ", error);
+        });
+    })
+}
+
 export const login = (email, password) => {
     return new Promise((resolve, reject) => {
         firebase.auth().signInWithEmailAndPassword(email, password)

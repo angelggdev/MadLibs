@@ -1,11 +1,23 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Modal, Button, Spinner } from "react-bootstrap";
-import StoryContext from "../../../contexts/StoryContext";
 import './SaveStoryModal.css';
+import {addStory} from '../../../services/firebase';
 
 const SaveStoryModal = (props) => {
-    const {saveStory, savingStory} = useContext(StoryContext);
     const[storyName, setStoryName] = useState();
+    const[savingStory, setSavingStory] = useState(false);
+
+    const saveStory = (_story, storyName) => {
+        setSavingStory(true);
+        addStory(_story, storyName)
+        .then(() => {
+            setSavingStory(false);
+            props.setShowSaveModal(!props.showSaveModal);
+        })
+        .catch(() => {
+            setSavingStory(false);
+        })
+    }
 
     return(
         <Modal

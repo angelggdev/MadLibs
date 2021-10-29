@@ -1,21 +1,33 @@
 import './MyStories.css';
 import { useContext, useEffect, useState } from 'react';
-import Box from '../GridTitles/Box/Box';
 import { Spinner, Button } from 'react-bootstrap';
 import UserContext from '../../contexts/UserContext';
 import StoryContext from '../../contexts/StoryContext';
 import { useHistory } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { removeStory } from '../../services/firebase';
 
 const MyStories = () => {
     const{user} = useContext(UserContext);
     const history = useHistory();
     const{getUserStories, myStories, setMyStories} = useContext(StoryContext);
+    const[removingStory, setRemovingStory] = useState(false);
 
     useEffect(() => {
         setMyStories([]);
         user &&
         getUserStories();
     }, [user])
+
+    const _removeStory = (storyId) => {
+        setRemovingStory(true);
+        removeStory(user, storyId)
+        .then(() => {
+            setRemovingStory(false);
+            getUserStories();
+        })
+    }
 
     return(
         <div className='myStoriesContainer'>
@@ -24,14 +36,25 @@ const MyStories = () => {
                 myStories.length !== 0?
                 myStories.map((x, i) => {
                     return(
-                        <Button 
-                            variant='none' 
-                            key={x.id} 
+                        <div 
+                            key={x.id}
                             className="storyF db pa4"
-                            onClick={() => history.push(process.env.PUBLIC_URL + `/my-stories/${x.id}`)}
                         >
-                            {x.title}
-                        </Button>
+                            <Button 
+                                variant='none' 
+                                onClick={() => history.push(process.env.PUBLIC_URL + `/my-stories/${x.id}`)}
+                            >
+                                {x.title}
+                            </Button>
+                            {
+                                removingStory?
+                                <Spinner animation='grow'/>
+                                :
+                                <Button className='removeStory' onClick={() => _removeStory(x.id)}>
+                                    <FontAwesomeIcon icon={faTrashAlt} />
+                                </Button>
+                            }
+                        </div>
                     )
                 })
                 :
