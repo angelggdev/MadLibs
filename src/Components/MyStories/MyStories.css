@@ -1,0 +1,28 @@
+.myStoriesContainer{
+    display:flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.removeStory{
+    padding:0;
+    background:none;
+    border:none;
+}
+
+.removeStory:focus, .removeStory:focus-visible, .removeStory:focus-within{
+    border:none;
+    box-shadow: none;
+}
+
+.removeStory:hover{
+    background: none;
+}
+
+.removeStory svg{
+    color:red;
+}
+.removeStory svg:hover{
+    color:black;
+}

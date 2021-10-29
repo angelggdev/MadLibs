@@ -2,21 +2,19 @@
   font-family: '[free version] Sketch Block Bold';
   font-style: normal;
   font-weight: normal;
-  src: local('[free version] Sketch Block Bold'), url('Sketch_Block.woff') format('woff');
+  src: local('[free version] Sketch Block Bold'), url('./assets/Sketch_Block.woff') format('woff');
 }
 
 body {
   font-family: '[free version] Sketch Block Bold';
-  background: url('fondo2.jpg') no-repeat center center fixed; 
+  background: url('./assets/fondo2.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; 
 }
-.container{
-  margin:2rem;
-}
 .gridMadlibs {
+  padding:10px 40px 10px 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -54,15 +52,14 @@ body {
 }
 
 .title {
-  background-color: rgba(238, 231, 227, 0.8);
   padding: 0.625rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 10px auto 40px auto;
   border-radius: 1.875rem;
-  border-style:outset;
+  font-size: 50px;
   text-align:center;
-  max-width: 50%;
+  width:fit-content;
   height: 90%;
+  color:white;
 }
 
 .button {
@@ -112,7 +109,6 @@ body {
   border-style:outset;
   text-align:center;
   cursor:pointer;
-  font-size:0.65rem;
   max-width: 50%;
 }
 .finalbutton:hover {
