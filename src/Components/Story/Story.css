@@ -31,3 +31,9 @@
     border-style:outset;
     text-align:center;
 }
+
+@media screen and (max-width:767px){
+    .storyF {
+        font-size: 0.8rem;
+    }
+}

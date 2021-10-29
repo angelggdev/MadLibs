@@ -5,8 +5,8 @@
     justify-content: center;
 }
 .loginForm{
-    height:70vh;
-    width:30vw;
+    height:400px;
+    width:350px;
     background-color: rgba(238, 231, 227, 0.8);
     padding:20px;
     border-radius:20px;
@@ -14,10 +14,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-}
-
-.loginForm input {
-    width: 20vw;
 }
 
 .formAlert{
@@ -37,4 +33,16 @@
 
 .loginLink:focus{
     box-shadow:none;
+}
+
+.buttonGroup{
+    display:flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width:767px){
+    .loginForm{
+        height:400px;
+        width:300px;       
+    } 
 }
