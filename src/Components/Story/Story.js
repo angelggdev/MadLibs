@@ -4,7 +4,6 @@ import { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import StoryContext from "../../contexts/StoryContext";
 import UserContext from "../../contexts/UserContext";
-import { addStory } from "../../services/firebase";
 import { Button } from "react-bootstrap";
 import SaveStoryModal from "./SaveStoryModal/SaveStoryModal";
 
