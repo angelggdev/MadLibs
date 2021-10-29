@@ -22,7 +22,6 @@ export const StoryContextProvider = ({children}) =>{
           let _blanks = blanks
           _blanks.push(word);
           setBlanks(_blanks);
-          console.log(_blanks)
         } 
         if (word !== "" && counter === storyLength - 1) {
             history.push(process.env.PUBLIC_URL + "/result");
