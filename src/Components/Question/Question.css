@@ -1,0 +1,31 @@
+.question {
+    font-weight: bold;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+     text-align: center;
+}
+  
+.button {
+    border-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    cursor:pointer;
+    font-size:0.65rem;
+}
+
+.enter {
+    background-color: rgba(238, 231, 227, 0.8);
+    padding: 0.625rem;
+    margin: 0.625rem;
+    border-radius: 1rem;
+    border-style:outset;
+    text-align:center;
+}
+.input {
+    background-color: rgba(238, 231, 227, 0.8);
+    border-radius:1rem;
+    border-color: slategrey;
+    border-width:0.0625rem;
+}

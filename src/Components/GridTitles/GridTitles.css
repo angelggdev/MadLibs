@@ -1,0 +1,18 @@
+.gridMadlibs {
+    padding:10px 40px 10px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.title {
+    padding: 0.625rem;
+    margin: 10px auto 40px auto;
+    border-radius: 1.875rem;
+    font-size: 50px;
+    text-align:center;
+    width:fit-content;
+    height: 90%;
+    color:white;
+}
+  

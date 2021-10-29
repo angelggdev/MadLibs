@@ -2,6 +2,7 @@ import Box from './Box/Box.js';
 import MadLibs from '../../assets/madlibs.js';
 import { useContext, useEffect } from 'react';
 import StoryContext from '../../contexts/StoryContext.js';
+import './GridTitles.css';
 
 const GridTitles = () => {
     const{

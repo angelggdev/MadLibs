@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import StoryContext from '../../contexts/StoryContext';
 import MadLibs from '../../assets/madlibs';
 import { useParams } from 'react-router';
+import './Question.css';
 
 const Question = () => {
     const {
