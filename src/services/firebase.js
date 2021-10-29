@@ -3,12 +3,12 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCb3Cl7J8vjkfCQlMj3zBKaEm2noKAi0-g",
-    authDomain: "madlibs-92449.firebaseapp.com",
-    projectId: "madlibs-92449",
-    storageBucket: "madlibs-92449.appspot.com",
-    messagingSenderId: "912018014307",
-    appId: "1:912018014307:web:77e427d21d885f033b7856"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId
 };
 
 firebase.initializeApp(firebaseConfig);
