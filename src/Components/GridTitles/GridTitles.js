@@ -19,7 +19,7 @@ const GridTitles = () => {
         setCounter(0);
         setFinalStory('Choose a template and build your own story!');
         setBlanks([]);
-    }, [])
+    }, [setStory, setStorylength, setCounter, setFinalStory, setBlanks])
 
     return (
         <div className= 'tc container gridTitles'>
