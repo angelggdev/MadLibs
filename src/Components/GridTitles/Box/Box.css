@@ -1,0 +1,26 @@
+.lib {
+    display: flex;
+    background-color: rgba(238, 231, 227, 0.8);
+    padding: 0.625rem;
+    margin: 0.625rem;
+    border-radius: 1.875rem;
+    border-style:outset;
+    text-align:center;
+    width: 10rem;
+    height: 10rem;
+    align-items: center;
+    justify-content: center;
+}
+  
+.lib:hover {
+    transition: all 1s;
+    transform: scale(1.1);
+    cursor:pointer;
+}
+
+.box {
+    border-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    cursor:pointer;
+    font-size:1rem;
+}

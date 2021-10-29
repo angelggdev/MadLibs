@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import 'tachyons';
-
+import './Box.css';
 
 const Box = ({titles, index}) => {
     const history = useHistory();
