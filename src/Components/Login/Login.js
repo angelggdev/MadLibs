@@ -96,7 +96,7 @@ const Login = () => {
                     <Spinner animation="grow" />
                     :
                     register?
-                    <>
+                    <div className='buttonGroup'>
                         <Button
                             type='submit'
                             variant={disableSubmit?'dark':'primary'}
@@ -105,9 +105,9 @@ const Login = () => {
                             Register
                         </Button>
                         <Button variant='none' onClick={() => setRegister(false)} className='loginLink'>Login</Button>
-                    </>
+                    </div>
                     :
-                    <>
+                    <div className='buttonGroup'>
                         <Button
                             type='submit'
                             variant={disableSubmit?'dark':'primary'}
@@ -116,7 +116,7 @@ const Login = () => {
                             Login
                         </Button>
                         <Button variant='none' onClick={() => setRegister(true)} className='loginLink'>Register</Button>
-                    </>
+                    </div>
                 }
             </Form>
         </Container>

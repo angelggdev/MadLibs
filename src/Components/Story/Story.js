@@ -6,6 +6,7 @@ import StoryContext from "../../contexts/StoryContext";
 import UserContext from "../../contexts/UserContext";
 import { Button } from "react-bootstrap";
 import SaveStoryModal from "./SaveStoryModal/SaveStoryModal";
+import './Story.css';
 
 const Story = () => {
     const {finalStory, previousWord, story, selectAnotherStory} = useContext(StoryContext);
