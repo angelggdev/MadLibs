@@ -1,0 +1,10 @@
+.confirmationModalBody{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align:center;
+}
+
+.confirmationModalBody button{
+    width:50px;
+}
