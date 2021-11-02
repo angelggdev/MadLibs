@@ -6,6 +6,7 @@ import StoryContext from '../../contexts/StoryContext';
 import { useHistory } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import ConfirmationModal from './ConfirmationModal/ConfirmationModal';
 import { removeStory } from '../../services/firebase';
 
 const MyStories = () => {
@@ -13,11 +14,14 @@ const MyStories = () => {
     const history = useHistory();
     const{getUserStories, myStories, setMyStories, gettingStories} = useContext(StoryContext);
     const[removingStory, setRemovingStory] = useState(false);
+    const[storyToDelete, setStoryToDelete] = useState('');
+    const[showConfirmationModal, setShowConfirmationModal] = useState(false);
 
     useEffect(() => {
         setMyStories([]);
         user &&
         getUserStories();
+        // eslint-disable-next-line
     }, [user])
 
     const _removeStory = (storyId) => {
@@ -51,7 +55,7 @@ const MyStories = () => {
                                 removingStory?
                                 <Spinner animation='grow'/>
                                 :
-                                <Button className='removeStory' onClick={() => _removeStory(x.id)}>
+                                <Button className='removeStory' onClick={() => {setStoryToDelete(x.id); setShowConfirmationModal(true)}}>
                                     <FontAwesomeIcon icon={faTrashAlt} />
                                 </Button>
                             }
@@ -69,6 +73,7 @@ const MyStories = () => {
                     Register to create your own stories or login to see your stories!
                 </div>
             }
+            <ConfirmationModal storyToDelete={storyToDelete} _removeStory={_removeStory} setShowConfirmationModal={setShowConfirmationModal} showConfirmationModal={showConfirmationModal}/>
         </div>
     )
 }

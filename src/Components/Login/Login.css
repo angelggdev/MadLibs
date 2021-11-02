@@ -22,6 +22,8 @@
 
 .loginForm label{
     display:flex;
+    flex-wrap: wrap;
+    max-width: fit-content;
     justify-content: space-between;
 }
 

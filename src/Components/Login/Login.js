@@ -22,6 +22,12 @@ const Login = () => {
         if (!values.password) {
             errors.password = 'Required';
         }
+
+        if (register && !values.passwordCopy) {
+            errors.passwordCopy = 'Required';
+        } else if (register && values.password !== values.passwordCopy) {
+            errors.passwordCopy = `The passwords don't match`;
+        }
     
         if(Object.keys(errors).length === 0 
             && formik.touched.email) {
@@ -36,14 +42,15 @@ const Login = () => {
     const formik = useFormik({
         initialValues: {
           email: '',
-          password:''
+          password:'',
+          passwordCopy: ''
         },
         validate,
         onSubmit: values => {
             if (!register){
                 submitLogin(values.email, values.password);
             } else {
-                submitRegister(values.email, values.password);
+                submitRegister(values.email, values.passwordCopy);
             }
         },
     });
@@ -88,6 +95,35 @@ const Login = () => {
                         onBlur={formik.handleBlur}
                     />
                 </Form.Group>
+                {
+                    register &&
+                    <Form.Group>
+                        <Form.Label>
+                            <p>Repeat Password</p>
+                            {formik.touched.passwordCopy && formik.errors.passwordCopy ? (
+                                <span className='formAlert'>{formik.errors.passwordCopy}</span>
+                            ) : null}
+                        </Form.Label>
+                        <Form.Control 
+                            id='passwordCopy'
+                            name='passwordCopy'
+                            type='password'
+                            maxLength='10'
+                            value={formik.values.passwordCopy}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            onPaste={(e)=>{
+                                e.preventDefault()
+                                return false;
+                            }} 
+                            onCopy={(e)=>{
+                                e.preventDefault()
+                                return false;
+                            }}
+                            autocomplete="off"
+                        />
+                    </Form.Group>
+                }
                 {
                     user?
                     <span className='formAlert'>There's a user signed in already</span>
