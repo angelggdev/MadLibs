@@ -65,7 +65,7 @@ const MadLibs = {
         {
             "title": "Weird News",
             "blanks": ["a noun", "a place", "a verb ending in ing", "a noun", "a name", "a verb", "a noun", "a verb", "a noun", "a part of body", "a type of liquid", "a place", "a past tense verb ", "a foreign country", "a verb", "a noun", "a past tense verb", "an adjective", "a verb", "a noun", "a plural noun"],
-            "value": ["A ", " in ", " was arrested this morning after he was caught ", " in front of ", ". ", " had a history of ", ", but no one-not even his ", "-ever imagined he'd ", " with a ", " stuck in his ", ". After drinking a ", ", cops followed him to a ", " where he reportedly  ", "in the fry machine. Later, a woman from ", " was charged with a similar crime. But rather than ", "with a ", ", she ", "with a ", " dog. Either way, we imagine that after witnessing him ", " with a ", " there are probably a whole lot of ", " that are going to need some therapy!"]
+            "value": ["A ", " in ", " was arrested this morning after he was caught ", " in front of ", ". ", " had a history of ", ", but no one-not even his ", "-ever imagined he'd ", " with a ", " stuck in his ", ". After drinking a ", ", cops followed him to a ", " where he reportedly  ", " in the fry machine. Later, a woman from ", " was charged with a similar crime. But rather than ", " with a ", ", she ", " with a ", " dog. Either way, we imagine that after witnessing him ", " with a ", " there are probably a whole lot of ", " that are going to need some therapy!"]
         },
         {      
             "title": "All About Vampires",
